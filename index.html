@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentation OS</title>
+  <meta name="description" content="Corporate presentation intelligence and design system" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-mark"><span class="brand-dot"></span><span>Presentation OS</span></div>
+      <nav>
+        <button class="nav-item active" data-view="workspace">Workspace</button>
+        <button class="nav-item" data-view="design-system">Design System</button>
+        <button class="nav-item" data-view="architecture">Pipeline</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="status-pill"><span></span> Prototype v0.1</div>
+        <p>AI directs. Code designs.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">CORPORATE PRESENTATION INTELLIGENCE</p>
+          <h1 id="view-title">Workspace</h1>
+        </div>
+        <button id="new-project-top" class="btn secondary">Nova apresentação</button>
+      </header>
+
+      <section id="workspace" class="view active">
+        <div class="hero-grid">
+          <article class="hero-card">
+            <div class="hero-copy">
+              <span class="badge">MVP</span>
+              <h2>Documento → narrativa → slide profissional.</h2>
+              <p>Estruture a mensagem antes de desenhar. O motor classifica cada slide e o associa a layouts corporativos aprovados.</p>
+              <button id="start-btn" class="btn primary">Criar apresentação</button>
+            </div>
+            <div class="mini-pipeline">
+              <div><strong>01</strong><span>Intake</span></div>
+              <div><strong>02</strong><span>Storyline</span></div>
+              <div><strong>03</strong><span>Slide intent</span></div>
+              <div><strong>04</strong><span>Layout</span></div>
+              <div><strong>05</strong><span>PPTX</span></div>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <span class="metric-label">Princípio do sistema</span>
+            <strong>IA escolhe.<br/>Código desenha.</strong>
+            <p>Menos improvisação visual, mais consistência e auditabilidade.</p>
+          </article>
+        </div>
+
+        <div class="section-heading">
+          <div><p class="eyebrow">PROJETO ATUAL</p><h3>Storyline Builder</h3></div>
+          <div class="progress"><span id="progress-fill"></span></div>
+        </div>
+
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon">＋</div>
+          <h3>Nenhuma apresentação em construção</h3>
+          <p>Comece com objetivo, audiência e conteúdo-fonte. A primeira versão gera uma storyline controlada e seleciona arquétipos de slides.</p>
+          <button id="empty-start" class="btn primary">Começar</button>
+        </div>
+
+        <div id="builder" class="builder hidden">
+          <div class="stepper">
+            <button class="step active" data-step="1"><span>1</span> Briefing</button>
+            <button class="step" data-step="2"><span>2</span> Storyline</button>
+            <button class="step" data-step="3"><span>3</span> Slide specs</button>
+          </div>
+
+          <section class="step-panel active" data-panel="1">
+            <div class="panel-grid">
+              <div class="form-card">
+                <div class="form-heading"><span class="badge neutral">1</span><div><h3>Briefing</h3><p>Contexto mínimo para o motor estruturar a apresentação.</p></div></div>
+                <label>Título do projeto<input id="project-title" value="Apresentação Executiva" /></label>
+                <div class="two-col">
+                  <label>Objetivo<select id="objective"><option>Decisão executiva</option><option>Apresentação comercial</option><option>Relatório de resultados</option><option>Treinamento</option></select></label>
+                  <label>Audiência<select id="audience"><option>Diretoria</option><option>Cliente</option><option>Time interno</option><option>Conselho</option></select></label>
+                </div>
+                <label>Conteúdo-fonte<textarea id="source-content" rows="11" placeholder="Cole aqui anotações, transcrição, texto de documento ou briefing...">O projeto busca automatizar apresentações corporativas mantendo qualidade de conteúdo e identidade visual. A solução deve transformar documentos em uma narrativa clara, classificar a intenção de cada slide, selecionar layouts aprovados e produzir um PowerPoint editável. O foco é reduzir retrabalho, preservar consistência e permitir governança de marca.</textarea></label>
+                <div class="actions"><button id="generate-storyline" class="btn primary">Gerar storyline</button></div>
+              </div>
+              <aside class="info-card">
+                <p class="eyebrow">O QUE ACONTECE AGORA</p>
+                <h3>Estrutura antes do layout.</h3>
+                <p>Esta versão usa um motor local determinístico para demonstrar o fluxo. A próxima camada substituirá a análise semântica por IA estruturada.</p>
+                <ul><li>Identifica mensagem central</li><li>Cria sequência narrativa</li><li>Classifica intenção do slide</li><li>Mapeia arquétipos de layout</li></ul>
+              </aside>
+            </div>
+          </section>
+
+          <section class="step-panel" data-panel="2">
+            <div class="panel-title"><div><p class="eyebrow">STORYLINE</p><h3>Estrutura narrativa sugerida</h3></div><button id="regen-storyline" class="btn secondary">Regerar</button></div>
+            <div id="storyline-list" class="storyline-list"></div>
+            <div class="actions split"><button class="btn ghost" data-go="1">Voltar</button><button id="approve-storyline" class="btn primary">Aprovar storyline</button></div>
+          </section>
+
+          <section class="step-panel" data-panel="3">
+            <div class="panel-title"><div><p class="eyebrow">SLIDE SPECS</p><h3>Conteúdo + intenção + layout</h3></div><button id="export-json" class="btn secondary">Exportar JSON</button></div>
+            <div id="spec-list" class="spec-grid"></div>
+            <div class="actions split"><button class="btn ghost" data-go="2">Voltar</button><button id="pptx-disabled" class="btn primary disabled" title="Renderer PPTX entra na próxima versão">Gerar PPTX · próxima etapa</button></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="design-system" class="view">
+        <div class="page-intro"><p class="eyebrow">CONTROLLED DESIGN</p><h2>Design System de apresentações</h2><p>Layouts são tratados como componentes semanticamente descritos. A IA seleciona; o renderer executa regras determinísticas.</p></div>
+        <div id="layout-library" class="layout-grid"></div>
+      </section>
+
+      <section id="architecture" class="view">
+        <div class="page-intro"><p class="eyebrow">SYSTEM PIPELINE</p><h2>Arquitetura do motor</h2><p>Separação explícita entre inteligência editorial e produção visual.</p></div>
+        <div class="architecture-flow">
+          <div class="arch-node"><span>01</span><strong>Sources</strong><p>PDF · DOCX · PPTX · texto · dados</p></div><i>→</i>
+          <div class="arch-node"><span>02</span><strong>Content Engine</strong><p>Extrair · entender · verificar</p></div><i>→</i>
+          <div class="arch-node"><span>03</span><strong>Storyline</strong><p>Sequência · mensagem · densidade</p></div><i>→</i>
+          <div class="arch-node"><span>04</span><strong>Intent</strong><p>Comparação · processo · KPI · insight</p></div><i>→</i>
+          <div class="arch-node"><span>05</span><strong>Layout Engine</strong><p>Componentes + regras + brand</p></div><i>→</i>
+          <div class="arch-node"><span>06</span><strong>PPTX + QA</strong><p>Render · inspecionar · corrigir</p></div>
+        </div>
+        <div class="principles-grid">
+          <article><span>01</span><h3>IA não posiciona pixels</h3><p>O modelo decide intenção, conteúdo e componente. Coordenadas e composição pertencem ao código.</p></article>
+          <article><span>02</span><h3>Brand como sistema</h3><p>Tipografia, cores, grids, componentes, fotografia, charts e espaçamentos são tokens e regras.</p></article>
+          <article><span>03</span><h3>Quality loop</h3><p>Generate → Render → Inspect → Fix → Approve.</p></article>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="src/app.js"></script>
+</body>
+</html>
