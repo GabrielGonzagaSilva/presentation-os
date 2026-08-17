@@ -1,143 +1,235 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Presentation OS</title>
-  <meta name="description" content="Criação estruturada de apresentações corporativas" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="src/styles.css" />
-  <style>
-    .nav-section{margin:18px 12px 4px;font-size:10px;font-weight:700;letter-spacing:.12em;color:#8a9298}.helper{font-size:12px;color:#70757a;margin-top:6px}.simple-flow{display:grid;gap:12px;margin:18px 0}.simple-flow div{padding:13px 0;border-bottom:1px solid var(--line)}.simple-flow b,.simple-flow span{display:block}.simple-flow span{font-size:12px;color:var(--muted);margin-top:3px}.advanced-details{margin-top:18px;border-top:1px solid var(--line);padding-top:15px;color:var(--muted);font-size:12px}.advanced-details summary{cursor:pointer;font-weight:600;color:var(--text)}.stepper{position:sticky;top:0;z-index:4;background:var(--bg);padding:10px 0}.form-card label{font-size:12px}.form-card label>span{font-weight:400;color:var(--muted)}.flow-note{margin:0 0 20px;padding:12px 14px;border-radius:12px;background:#eef3f8;color:#536579;font-size:12px}.future-action{opacity:.6}.page-intro{max-width:720px}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Portfólio de Gabriel Gonzaga — Product Design, Inovação, Inteligência Artificial e LXD.">
+  <meta name="theme-color" content="#080b10">
+  <title>Gabriel Gonzaga — Product Designer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (() => {
+      const saved = localStorage.getItem('gg-theme');
+      const system = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = saved || system;
+    })();
+  </script>
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <div class="brand-mark"><span class="brand-dot"></span><span>Presentation OS</span></div>
-      <nav>
-        <button class="nav-item active" data-view="workspace">Apresentações</button>
-        <p class="nav-section">AVANÇADO</p>
-        <button class="nav-item" data-view="design-system">Modelos e marca</button>
-        <button class="nav-item" data-view="architecture">Como funciona</button>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <header class="topbar">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#top" aria-label="Ir para o início">
+        <span class="brand-mark" aria-hidden="true">GG</span>
+        <span class="brand-name">Gabriel Gonzaga</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#work">Projetos</a>
+        <a href="#experience">Experiência</a>
+        <a href="#about">Sobre</a>
+        <a href="curriculo.html" target="_blank" rel="noopener noreferrer">Currículo</a>
       </nav>
-      <div class="sidebar-bottom">
-        <div class="status-pill"><span></span> Protótipo funcional</div>
-        <p>Simples para usar. Completo por trás.</p>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema claro e escuro" title="Alternar tema">
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☼</span>
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+        </button>
+        <a class="contact-link" href="mailto:gabrielgonzagasilva@outlook.com">Contato <span aria-hidden="true">↗</span></a>
       </div>
-    </aside>
+    </div>
+  </header>
 
-    <main class="main">
-      <header class="topbar">
-        <div><p class="eyebrow">APRESENTAÇÕES CORPORATIVAS</p><h1 id="view-title">Apresentações</h1></div>
-        <button id="new-project-top" class="btn secondary">Nova apresentação</button>
-      </header>
-
-      <section id="workspace" class="view active">
-        <div class="hero-grid">
-          <article class="hero-card">
-            <div class="hero-copy">
-              <span class="badge">MVP</span>
-              <h2>Transforme seu conteúdo em uma apresentação estruturada.</h2>
-              <p>Informe o objetivo, para quem você vai apresentar e cole o material que já possui. O sistema organiza a sequência de slides e escolhe o tipo de layout adequado.</p>
-              <button id="start-btn" class="btn primary">Criar apresentação</button>
-            </div>
-            <div class="mini-pipeline">
-              <div><strong>01</strong><span>Conteúdo</span></div>
-              <div><strong>02</strong><span>Estrutura</span></div>
-              <div><strong>03</strong><span>Revisão</span></div>
-            </div>
-          </article>
-          <article class="metric-card">
-            <span class="metric-label">Como funciona</span>
-            <strong>Você informa.<br/>O sistema organiza.</strong>
-            <p>As decisões técnicas ficam escondidas até você precisar delas.</p>
-          </article>
-        </div>
-
-        <div class="section-heading">
-          <div><p class="eyebrow">PROJETO ATUAL</p><h3>Monte sua apresentação</h3></div>
-          <div class="progress"><span id="progress-fill"></span></div>
-        </div>
-
-        <div id="empty-state" class="empty-state">
-          <div class="empty-icon">＋</div>
-          <h3>Comece uma nova apresentação</h3>
-          <p>Você só precisa do objetivo, do público e do conteúdo de origem. O restante será organizado pelo sistema.</p>
-          <button id="empty-start" class="btn primary">Começar</button>
-        </div>
-
-        <div id="builder" class="builder hidden">
-          <div class="stepper">
-            <button class="step active" data-step="1"><span>1</span> Conteúdo</button>
-            <button class="step" data-step="2"><span>2</span> Estrutura</button>
-            <button class="step" data-step="3"><span>3</span> Revisão</button>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="shell hero-layout">
+        <div class="hero-copy-block">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Product Design · Innovation · AI · LXD</p>
+          <h1>Design para transformar complexidade em <span class="gradient-text">experiências mais claras.</span></h1>
+          <p class="hero-copy">
+            Atuo na interseção entre Product Design, inovação, inteligência artificial e aprendizagem corporativa,
+            conectando necessidades de usuários e negócios a soluções digitais funcionais, consistentes e escaláveis.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">Ver projetos</a>
+            <a class="button button-ghost" href="https://www.linkedin.com/in/gabrielgonzagasilva" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
+        </div>
 
-          <section class="step-panel active" data-panel="1">
-            <div class="panel-grid">
-              <div class="form-card">
-                <div class="form-heading"><span class="badge neutral">1</span><div><h3>O que você quer apresentar?</h3><p>Preencha apenas o essencial. Você poderá revisar tudo antes da etapa visual.</p></div></div>
-                <p class="flow-note">Não precisa organizar o texto antes. Cole anotações, transcrição, briefing ou trechos de documentos como estiverem.</p>
-                <label>Título da apresentação<input id="project-title" value="Apresentação Executiva" /></label>
-                <div class="two-col">
-                  <label>O que a apresentação precisa alcançar?<select id="objective"><option>Decisão executiva</option><option>Apresentação comercial</option><option>Relatório de resultados</option><option>Treinamento</option></select></label>
-                  <label>Quem vai assistir?<select id="audience"><option>Diretoria</option><option>Cliente</option><option>Time interno</option><option>Conselho</option></select></label>
-                </div>
-                <label>Conteúdo de origem<textarea id="source-content" rows="12" placeholder="Cole aqui suas anotações, transcrição, briefing ou texto do documento...">O projeto busca automatizar apresentações corporativas mantendo qualidade de conteúdo e identidade visual. A solução deve transformar documentos em uma narrativa clara, classificar a intenção de cada slide, selecionar layouts aprovados e produzir um PowerPoint editável. O foco é reduzir retrabalho, preservar consistência e permitir governança de marca.</textarea></label>
-                <div class="actions"><button id="generate-storyline" class="btn primary">Criar estrutura da apresentação</button></div>
-              </div>
-              <aside class="info-card">
-                <p class="eyebrow">3 PASSOS</p><h3>Do conteúdo à apresentação.</h3>
-                <div class="simple-flow">
-                  <div><b>1. Conteúdo</b><span>Você fornece contexto e material.</span></div>
-                  <div><b>2. Estrutura</b><span>O sistema propõe a sequência dos slides.</span></div>
-                  <div><b>3. Revisão</b><span>Você confere os layouts antes da produção.</span></div>
-                </div>
-                <details class="advanced-details"><summary>O que acontece por trás?</summary><p>O sistema identifica a função de cada slide e associa um modelo do Design System. Essas decisões continuam disponíveis nas áreas avançadas.</p></details>
-              </aside>
+        <aside class="hero-aside" aria-label="Resumo profissional">
+          <p class="micro-label">Agora</p>
+          <div class="aside-row"><span>Crescimentum</span><strong>Inovação, IA, LXD e Product Design</strong></div>
+          <div class="aside-row"><span>Aureum</span><strong>Co-Founder & Product Lead</strong></div>
+          <div class="aside-row"><span>Formação</span><strong>Design Gráfico · UNICID</strong></div>
+          <div class="aside-row"><span>Localização</span><strong>São Paulo · SP</strong></div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Product Design</span><span>UX/UI</span><span>Product Strategy</span><span>AI Governance</span>
+        <span>Design Systems</span><span>Learning Experience Design</span><span>Research &amp; Synthesis</span><span>Prototyping</span>
+        <span>Product Design</span><span>UX/UI</span><span>Product Strategy</span><span>AI Governance</span>
+        <span>Design Systems</span><span>Learning Experience Design</span><span>Research &amp; Synthesis</span><span>Prototyping</span>
+      </div>
+    </div>
+
+    <section class="section" id="work">
+      <div class="shell">
+        <div class="section-head">
+          <p class="section-kicker">Projetos selecionados</p>
+          <div>
+            <h2>Produto, sistemas e decisões melhores.</h2>
+            <p>Uma seleção dos projetos que melhor representam meu direcionamento atual em Product Design, IA aplicada e produtos digitais.</p>
+          </div>
+        </div>
+
+        <div class="work-list">
+          <article class="work-item">
+            <div class="work-meta">
+              <span>01</span>
+              <span>Aureum · 2026</span>
             </div>
-          </section>
+            <div class="work-body">
+              <p class="work-type">Produto interno · Product Design</p>
+              <h3>Aureum Hub</h3>
+              <p>Plataforma interna para centralizar informações, processos e recursos de apoio à operação, combinando arquitetura da informação, automação e IA para tornar consulta, organização e tomada de decisão mais eficientes.</p>
+            </div>
+            <div class="work-focus" aria-label="Áreas do projeto">
+              <span>Information Architecture</span>
+              <span>Automation</span>
+              <span>AI</span>
+            </div>
+          </article>
 
-          <section class="step-panel" data-panel="2">
-            <div class="panel-title"><div><p class="eyebrow">ESTRUTURA</p><h3>Confira a sequência sugerida</h3><p class="helper">Veja se a história faz sentido antes de entrar na parte visual.</p></div><button id="regen-storyline" class="btn secondary">Gerar outra sugestão</button></div>
-            <div id="storyline-list" class="storyline-list"></div>
-            <div class="actions split"><button class="btn ghost" data-go="1">Voltar e ajustar conteúdo</button><button id="approve-storyline" class="btn primary">Usar esta estrutura</button></div>
-          </section>
+          <article class="work-item">
+            <div class="work-meta">
+              <span>02</span>
+              <span>Crescimentum · 2026</span>
+            </div>
+            <div class="work-body">
+              <p class="work-type">Projeto corporativo · Inovação</p>
+              <h3>Governança e Produtização de IA</h3>
+              <p>Estruturação de fluxos, prompts, testes, critérios de qualidade, curadoria humana e documentação para transformar aplicações de IA em soluções corporativas mais confiáveis, responsáveis e replicáveis.</p>
+            </div>
+            <div class="work-focus" aria-label="Áreas do projeto">
+              <span>AI Governance</span>
+              <span>Prompt Design</span>
+              <span>Documentation</span>
+            </div>
+          </article>
 
-          <section class="step-panel" data-panel="3">
-            <div class="panel-title"><div><p class="eyebrow">REVISÃO</p><h3>Estrutura pronta para produção</h3><p class="helper">Cada slide já tem uma função e um modelo de layout associado.</p></div></div>
-            <div id="spec-list" class="spec-grid"></div>
-            <div class="actions split"><button class="btn ghost" data-go="2">Voltar para estrutura</button><button id="pptx-disabled" class="btn primary disabled future-action" title="Em desenvolvimento">Gerar PowerPoint · próxima etapa</button></div>
-          </section>
+          <article class="work-item">
+            <div class="work-meta">
+              <span>03</span>
+              <span>Confidencial · 2026</span>
+            </div>
+            <div class="work-body">
+              <p class="work-type">Produto digital · Design System</p>
+              <h3>Design System para aplicativo de turismo</h3>
+              <p>Estruturação de fundamentos visuais, estilos, componentes, variantes, estados e padrões de interface com foco em consistência, acessibilidade, escalabilidade e agilidade na evolução do produto.</p>
+            </div>
+            <div class="work-focus" aria-label="Áreas do projeto">
+              <span>Design System</span>
+              <span>UI Design</span>
+              <span>Accessibility</span>
+            </div>
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="design-system" class="view">
-        <div class="page-intro"><p class="eyebrow">ÁREA AVANÇADA</p><h2>Modelos e identidade visual</h2><p>Aqui ficam os modelos de slide usados pelo sistema. No produto final, esta área também reunirá cores, tipografia, logos e regras de marca da empresa.</p></div>
-        <div id="layout-library" class="layout-grid"></div>
-      </section>
+    <section class="section section-soft" id="experience">
+      <div class="shell">
+        <div class="section-head">
+          <p class="section-kicker">Experiência</p>
+          <div>
+            <h2>Design conectado a tecnologia, operação e negócio.</h2>
+          </div>
+        </div>
 
-      <section id="architecture" class="view">
-        <div class="page-intro"><p class="eyebrow">ÁREA AVANÇADA</p><h2>Como o sistema funciona</h2><p>Esta visualização explica o motor por trás da experiência. O usuário comum não precisa passar por esta tela.</p></div>
-        <div class="architecture-flow">
-          <div class="arch-node"><span>01</span><strong>Fontes</strong><p>PDF · DOCX · PPTX · texto · dados</p></div><i>→</i>
-          <div class="arch-node"><span>02</span><strong>Entendimento</strong><p>Extrair · interpretar · priorizar</p></div><i>→</i>
-          <div class="arch-node"><span>03</span><strong>Estrutura</strong><p>Sequência · mensagem · densidade</p></div><i>→</i>
-          <div class="arch-node"><span>04</span><strong>Tipo de slide</strong><p>Comparação · processo · KPI · insight</p></div><i>→</i>
-          <div class="arch-node"><span>05</span><strong>Design</strong><p>Modelos + regras + marca</p></div><i>→</i>
-          <div class="arch-node"><span>06</span><strong>PowerPoint</strong><p>Gerar · revisar · corrigir</p></div>
+        <div class="timeline">
+          <article class="timeline-row">
+            <div class="timeline-date"><span class="current-badge">Atual</span><span>Mai. 2026 — atual</span></div>
+            <div class="timeline-main"><h3>Crescimentum</h3><p class="role">Estagiário de Design · Inovação, IA, LXD e Product Design</p><p>Atuação em soluções digitais, pesquisa exploratória, IA aplicada, governança, documentação, fluxos e experiências digitais de aprendizagem.</p></div>
+          </article>
+          <article class="timeline-row">
+            <div class="timeline-date"><span class="current-badge">Atual</span><span>Jan. 2026 — atual</span></div>
+            <div class="timeline-main"><h3>Aureum</h3><p class="role">Co-Founder & Product Lead</p><p>Product Strategy, Product Design, UX/UI, identificação de oportunidades, definição de soluções, prototipação, validação e evolução contínua de produtos digitais.</p></div>
+          </article>
+          <article class="timeline-row">
+            <div class="timeline-date"><span>Jan. 2024 — Jan. 2025</span></div>
+            <div class="timeline-main"><h3>TP</h3><p class="role">Microsoft Technical Support · Copilot, Microsoft 365 e Windows</p><p>Diagnóstico e resolução de problemas técnicos, orientação de usuários e tradução de informações complexas em instruções claras, com foco em experiência e satisfação do cliente.</p></div>
+          </article>
+          <article class="timeline-row">
+            <div class="timeline-date"><span>2020 — atual</span></div>
+            <div class="timeline-main"><h3>Designer autônomo e freelancer</h3><p class="role">Design gráfico e comunicação visual</p><p>Desenvolvimento de identidades e materiais digitais, gestão de projetos e relacionamento com clientes.</p></div>
+          </article>
         </div>
-        <div class="principles-grid">
-          <article><span>01</span><h3>Decisões simples para o usuário</h3><p>O sistema pede apenas informações que realmente mudam o resultado.</p></article>
-          <article><span>02</span><h3>Complexidade sob demanda</h3><p>Controles técnicos e de marca existem, mas aparecem apenas quando necessários.</p></article>
-          <article><span>03</span><h3>Resultado sempre revisável</h3><p>Nenhuma etapa importante deve virar uma caixa-preta impossível de ajustar.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="capabilities">
+      <div class="shell">
+        <div class="section-head compact-head">
+          <p class="section-kicker">Competências</p>
+          <div><h2>Um repertório híbrido para construir produtos digitais.</h2></div>
         </div>
-      </section>
-    </main>
-  </div>
-  <script src="src/app.js"></script>
+        <div class="capability-grid">
+          <div class="capability"><span>01</span><h3>Product Design & UX/UI</h3><p>Experiências, fluxos, interfaces e decisões de produto centradas em usuários e negócio.</p></div>
+          <div class="capability"><span>02</span><h3>Research & Synthesis</h3><p>Pesquisa exploratória, análise de referências, mercado, evidências e síntese para decisões.</p></div>
+          <div class="capability"><span>03</span><h3>AI Product Thinking</h3><p>Prompts, testes, curadoria humana, governança e IA aplicada a processos corporativos.</p></div>
+          <div class="capability"><span>04</span><h3>Design Systems</h3><p>Fundamentos, componentes, variantes, estados, consistência, acessibilidade e escala.</p></div>
+          <div class="capability"><span>05</span><h3>Learning Experience</h3><p>Experiências digitais de aprendizagem, treinamentos e Design Instrucional.</p></div>
+          <div class="capability"><span>06</span><h3>Documentation</h3><p>Processos, decisões e artefatos organizados para colaboração e melhoria contínua.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="about">
+      <div class="shell about-layout">
+        <div class="about-copy">
+          <p class="section-kicker">Sobre</p>
+          <h2>Analítico no processo. Criativo na solução. Organizado na execução.</h2>
+          <p>Sou estudante de Design Gráfico, com formação complementar em Product Design pela Mergo e Direção de Arte pela Escola CUCA. Meu foco está em construir produtos e experiências que façam sentido para usuários e para o negócio.</p>
+          <p>Tenho interesse especial por produtos digitais, inteligência artificial aplicada, inovação corporativa e sistemas de maior complexidade.</p>
+        </div>
+
+        <div class="facts">
+          <div class="fact"><span>Formação</span><div><strong>UNICID · Design Gráfico</strong><small>Em andamento · conclusão prevista: dez. 2027</small></div></div>
+          <div class="fact"><span>Product Design</span><div><strong>Mergo</strong><small>Em andamento · 2026</small></div></div>
+          <div class="fact"><span>Direção de Arte</span><div><strong>Escola CUCA</strong><small>Concluído · 2025</small></div></div>
+          <div class="fact"><span>Ferramentas</span><div><strong>Figma · Adobe · ChatGPT · Claude</strong><small>Notion · Microsoft 365 · Google Workspace</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="shell contact-layout">
+        <p class="section-kicker">Contato</p>
+        <div>
+          <h2>Aberto a oportunidades em Produto Digital, Product Design, CX e Inovação.</h2>
+          <p>Para oportunidades, projetos ou conversas sobre produto, experiência e IA aplicada.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:gabrielgonzagasilva@outlook.com">Enviar e-mail ↗</a>
+            <a class="button button-ghost" href="https://www.linkedin.com/in/gabrielgonzagasilva" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a class="button button-ghost" href="curriculo.html" target="_blank" rel="noopener noreferrer">Currículo ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-wrap">
+      <span>© <span id="year"></span> Gabriel Gonzaga</span>
+      <span>Product Design · Innovation · AI · LXD</span>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
 </body>
 </html>
