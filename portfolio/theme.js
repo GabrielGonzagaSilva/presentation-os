@@ -3,6 +3,7 @@
   const button = document.getElementById('themeToggle');
   const metaTheme = document.querySelector('meta[name="theme-color"]');
   const year = document.getElementById('year');
+  const savedTheme = localStorage.getItem('gg-theme');
 
   const applyTheme = (theme, persist = true) => {
     root.dataset.theme = theme;
@@ -15,7 +16,7 @@
     }
   };
 
-  applyTheme(root.dataset.theme || 'dark', false);
+  applyTheme(savedTheme || 'dark', false);
 
   if (button) {
     button.addEventListener('click', () => {
