@@ -33,6 +33,36 @@
     availability.textContent = 'Available';
   }
 
+  /* QuantoLab is a live independent product and is surfaced as selected work. */
+  const projectGrid = document.querySelector('.project-cards');
+  if (projectGrid && !projectGrid.querySelector('[data-project="quantolab"]')) {
+    projectGrid.insertAdjacentHTML('afterbegin', `
+      <a class="project-card" data-project="quantolab" href="projects/quanto-lab.html">
+        <div class="project-card-top"><span class="project-arrow" aria-hidden="true">↗</span></div>
+        <div class="project-card-body">
+          <p class="project-type" data-en="Independent product · Live platform · 2026" data-pt="Produto independente · Plataforma online · 2026">Independent product · Live platform · 2026</p>
+          <h3>QuantoLab</h3>
+          <p data-en="A live decision-support platform with 28 tools for work, career and money, designed around transparent calculations, clear UX and zero required sign-up." data-pt="Plataforma online de apoio à decisão com 28 ferramentas para trabalho, carreira e dinheiro, estruturada em cálculos transparentes, UX clara e zero cadastro obrigatório.">A live decision-support platform with 28 tools for work, career and money, designed around transparent calculations, clear UX and zero required sign-up.</p>
+          <div class="project-tags"><span>Product Design</span><span>UX/UI</span><span>Information Architecture</span><span>Product Strategy</span></div>
+        </div>
+        <div class="project-card-cta"><span data-en="View case study" data-pt="Ver estudo de caso">View case study</span><span aria-hidden="true">→</span></div>
+      </a>
+    `);
+
+    const workHeading = document.querySelector('#work .section-intro h2');
+    const workDescription = document.querySelector('#work .section-intro > div > p');
+    if (workHeading) {
+      workHeading.dataset.en = 'Product thinking across decision tools, systems, AI and scalable interfaces.';
+      workHeading.dataset.pt = 'Produto, ferramentas de decisão, sistemas e interfaces escaláveis.';
+      workHeading.textContent = workHeading.dataset.en;
+    }
+    if (workDescription) {
+      workDescription.dataset.en = 'Four projects that represent my current direction: an independent decision-support product, internal products, responsible AI practices and interface systems built for consistency and scale.';
+      workDescription.dataset.pt = 'Quatro projetos que representam meu direcionamento atual: um produto independente de apoio à decisão, produto interno, IA aplicada com responsabilidade e sistemas de interface pensados para consistência e escala.';
+      workDescription.textContent = workDescription.dataset.en;
+    }
+  }
+
   document.querySelectorAll('.project-number').forEach((number) => number.remove());
 
   const safeGet = (key) => {
