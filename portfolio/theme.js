@@ -156,6 +156,12 @@
 
   const profileImage = document.querySelector('.portrait-wrap img');
   if (profileImage) {
+    if (currentScriptSrc) {
+      profileImage.src = new URL('gabriel-profile-hd.svg', currentScriptSrc).href;
+    }
+    profileImage.style.transform = 'none';
+    profileImage.style.imageRendering = 'auto';
+
     profileImage.addEventListener('error', () => {
       if (profileImage.dataset.fallback === '1') return;
       profileImage.dataset.fallback = '1';
