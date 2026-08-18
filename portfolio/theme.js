@@ -18,6 +18,17 @@
   obsoleteThemeButton?.remove();
 
   const currentScriptSrc = document.currentScript?.src;
+
+  /* Global favicon — shared by home, résumé and case-study pages. */
+  if (currentScriptSrc && !document.querySelector('link[data-portfolio-favicon]')) {
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.type = 'image/svg+xml';
+    favicon.href = new URL('favicon.svg', currentScriptSrc).href;
+    favicon.dataset.portfolioFavicon = 'true';
+    document.head.appendChild(favicon);
+  }
+
   if (currentScriptSrc && !document.querySelector('link[data-portfolio-polish]')) {
     const polish = document.createElement('link');
     polish.rel = 'stylesheet';
