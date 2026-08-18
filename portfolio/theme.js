@@ -9,6 +9,79 @@
   const metaDescription = document.querySelector('meta[name="description"]');
   const year = document.getElementById('year');
 
+  /* Desktop hero alignment fix
+     - removes the oversized gap below the sticky navigation
+     - aligns the profile card with the first content row
+     - makes the professional-focus strip span the complete hero width
+     Mobile/tablet stacking remains controlled by the existing stylesheet. */
+  const heroLayoutFix = document.createElement('style');
+  heroLayoutFix.id = 'hero-layout-alignment-fix';
+  heroLayoutFix.textContent = `
+    @media (min-width: 861px) {
+      .hero {
+        display: block;
+        min-height: 0;
+        padding: 34px 0 58px;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.45fr) minmax(300px, .55fr);
+        column-gap: 52px;
+        row-gap: 0;
+        align-items: start;
+      }
+
+      .hero-main {
+        display: contents;
+      }
+
+      .hero-main > .eyebrow {
+        grid-column: 1;
+        grid-row: 1;
+        margin-bottom: 18px;
+      }
+
+      .hero-main > h1 {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .hero-main > .hero-lead {
+        grid-column: 1;
+        grid-row: 3;
+        margin-top: 24px;
+      }
+
+      .hero-main > .hero-actions {
+        grid-column: 1;
+        grid-row: 4;
+        margin-top: 24px;
+      }
+
+      .profile-card {
+        grid-column: 2;
+        grid-row: 1 / 5;
+        align-self: start;
+        width: 100%;
+        margin: 0;
+      }
+
+      .hero-main > .focus-strip {
+        grid-column: 1 / -1;
+        grid-row: 5;
+        width: 100%;
+        margin-top: 30px;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .hero {
+        padding-top: 30px;
+      }
+    }
+  `;
+  document.head.appendChild(heroLayoutFix);
+
   const safeGet = (key) => {
     try { return localStorage.getItem(key); } catch (_) { return null; }
   };
