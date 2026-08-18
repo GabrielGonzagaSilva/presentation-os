@@ -1,13 +1,21 @@
 (() => {
   const root = document.documentElement;
   const body = document.body;
-  const themeButton = document.getElementById('themeToggle');
   const languageButton = document.getElementById('langToggle');
   const menuButton = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
   const metaTheme = document.querySelector('meta[name="theme-color"]');
   const metaDescription = document.querySelector('meta[name="description"]');
   const year = document.getElementById('year');
+
+  /* Dark-only visual system */
+  root.dataset.theme = 'dark';
+  root.style.colorScheme = 'dark';
+  if (metaTheme) metaTheme.setAttribute('content', '#080b10');
+  try { localStorage.removeItem('gg-theme'); } catch (_) {}
+
+  const obsoleteThemeButton = document.getElementById('themeToggle');
+  obsoleteThemeButton?.remove();
 
   const currentScriptSrc = document.currentScript?.src;
   if (currentScriptSrc && !document.querySelector('link[data-portfolio-polish]')) {
@@ -35,27 +43,6 @@
   };
 
   const currentLanguage = () => root.dataset.lang === 'pt' ? 'pt' : 'en';
-  const currentTheme = () => root.dataset.theme === 'light' ? 'light' : 'dark';
-
-  const updateThemeControls = () => {
-    const lang = currentLanguage();
-    const theme = currentTheme();
-    const target = theme === 'dark' ? 'light' : 'dark';
-    if (themeButton) {
-      const label = lang === 'pt'
-        ? `Mudar para tema ${target === 'light' ? 'claro' : 'escuro'}`
-        : `Switch to ${target} theme`;
-      themeButton.setAttribute('aria-label', label);
-      themeButton.setAttribute('title', label);
-    }
-    if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#f5f8fb' : '#080b10');
-  };
-
-  const applyTheme = (theme, persist = true) => {
-    root.dataset.theme = theme === 'light' ? 'light' : 'dark';
-    if (persist) safeSet('gg-theme', root.dataset.theme);
-    updateThemeControls();
-  };
 
   const applyLanguage = (lang, persist = true) => {
     lang = lang === 'pt' ? 'pt' : 'en';
@@ -87,7 +74,6 @@
     }
 
     if (persist) safeSet('gg-lang', lang);
-    updateThemeControls();
   };
 
   const setMenuState = (open) => {
@@ -141,14 +127,9 @@
     tickerTrack.classList.add('is-ready');
   };
 
-  applyTheme(safeGet('gg-theme') || 'dark', false);
   applyLanguage(safeGet('gg-lang') || 'en', false);
   setMenuState(false);
   buildTicker();
-
-  themeButton?.addEventListener('click', () => {
-    applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
-  });
 
   languageButton?.addEventListener('click', () => {
     applyLanguage(currentLanguage() === 'en' ? 'pt' : 'en');
