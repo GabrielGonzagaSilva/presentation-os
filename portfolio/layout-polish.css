@@ -24,6 +24,14 @@ p,li,dd{line-height:1.68}
 h1{line-height:.97}
 .section-intro h2,.about-intro h2,.contact-copy h2,.case-section h2,.case-section-head h2{line-height:1.08}
 
+/* Prevent Chrome/WebKit from clipping the last glyph of multiline gradient text. */
+.gradient-text{
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+  padding-inline-end:.12em;
+  padding-bottom:.035em;
+}
+
 @media (min-width:861px){
   .hero{display:block;min-height:0;padding:32px 0 54px}
   .hero-grid{grid-template-columns:minmax(0,1.45fr) minmax(300px,.55fr);column-gap:52px;row-gap:0;align-items:start}
@@ -91,6 +99,35 @@ h1{line-height:.97}
   .project-card:last-child{grid-column:auto;min-height:405px}
   .about-grid{gap:46px}
 }
+
+/* Home headline: use a block gradient fragment on compact layouts so the paint box
+   spans the full line instead of ending exactly at the last glyph. */
+@media(max-width:900px){
+  .hero,.hero-grid,.hero-main,.hero-main h1{overflow:visible!important}
+  .hero-main h1{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+    font-size:clamp(2.6rem,8.55vw,4.65rem)!important;
+    line-height:1.01!important;
+    letter-spacing:-.038em!important;
+    padding-right:.08em;
+    padding-bottom:.09em;
+    text-wrap:balance;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+  .hero-main .gradient-text{
+    display:block!important;
+    width:100%;
+    max-width:100%;
+    padding-right:.16em;
+    padding-bottom:.05em;
+    -webkit-box-decoration-break:clone;
+    box-decoration-break:clone;
+  }
+}
+
 @media(max-width:860px){
   .hero{padding:60px 0}
   .hero-grid{gap:34px}
@@ -111,6 +148,8 @@ h1{line-height:.97}
   body{line-height:1.55}
   .hero{padding:48px 0 50px}
   h1{line-height:.98}
+  .hero-main h1{font-size:clamp(2.45rem,10.3vw,3.9rem)!important;line-height:1.02!important;letter-spacing:-.034em!important}
+  .hero-main .gradient-text{padding-right:.18em}
   .hero-lead{margin-top:20px;line-height:1.62}
   .hero-actions{margin-top:21px}
   .profile-card-copy{padding:17px}
@@ -150,6 +189,8 @@ h1{line-height:.97}
 }
 @media(max-width:430px){
   .hero{padding-top:44px}
+  .hero-main h1{font-size:clamp(2.3rem,10.8vw,3.35rem)!important;line-height:1.03!important;letter-spacing:-.03em!important}
+  .hero-main .gradient-text{padding-right:.2em}
   .section{padding:56px 0}
   .project-card,.project-card:last-child{min-height:350px}
   .project-card-body{margin-top:30px}
@@ -157,6 +198,7 @@ h1{line-height:.97}
 }
 @media(max-width:360px){
   .hero{padding-top:40px}
+  .hero-main h1{font-size:clamp(2.15rem,10.6vw,3rem)!important;letter-spacing:-.025em!important}
   .section{padding:52px 0}
   .project-card,.project-card:last-child{min-height:335px}
 }
