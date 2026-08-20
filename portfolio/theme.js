@@ -19,6 +19,56 @@
 
   const currentScriptSrc = document.currentScript?.src;
 
+  /* Mobile hero safeguard: prevent large display type from clipping at line edges. */
+  if (!document.querySelector('style[data-mobile-hero-fix]')) {
+    const mobileHeroFix = document.createElement('style');
+    mobileHeroFix.dataset.mobileHeroFix = 'true';
+    mobileHeroFix.textContent = `
+      @media (max-width: 900px) {
+        .hero,
+        .hero-grid,
+        .hero-main,
+        .hero-main h1,
+        .hero-main .gradient-text {
+          overflow: visible !important;
+        }
+        .hero-main h1 {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+          font-size: clamp(2.65rem, 9.8vw, 5rem) !important;
+          line-height: 1 !important;
+          letter-spacing: -0.04em !important;
+          padding-right: 0.16em;
+          padding-bottom: 0.1em;
+          text-wrap: balance;
+          overflow-wrap: normal;
+          word-break: normal;
+        }
+        .hero-main .gradient-text {
+          display: inline;
+          padding-right: 0.04em;
+        }
+      }
+      @media (max-width: 430px) {
+        .hero-main h1 {
+          font-size: clamp(2.35rem, 11vw, 3.55rem) !important;
+          line-height: 1.01 !important;
+          letter-spacing: -0.035em !important;
+          padding-right: 0.14em;
+          padding-bottom: 0.1em;
+        }
+      }
+      @media (max-width: 360px) {
+        .hero-main h1 {
+          font-size: clamp(2.2rem, 10.8vw, 3.15rem) !important;
+          letter-spacing: -0.03em !important;
+        }
+      }
+    `;
+    document.head.appendChild(mobileHeroFix);
+  }
+
   /* Global favicon — shared by home, résumé and case-study pages. */
   if (currentScriptSrc && !document.querySelector('link[data-portfolio-favicon]')) {
     const favicon = document.createElement('link');
