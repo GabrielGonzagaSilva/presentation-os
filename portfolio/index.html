@@ -11,173 +11,161 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>Gabriel Gonzaga — Product Designer</title>
 <link rel="stylesheet" href="figma-portfolio.css">
-
-
+<script src="figma-portfolio.js" defer></script>
 </head>
 <body>
-
-<header>
+<header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="#top">Gabriel Gonzaga</a>
-    <div class="header-actions">
-      <button class="lang" id="langBtn"><span id="en" class="active">EN</span> / <span id="pt">PT</span></button>
-      <a class="header-link" href="mailto:gabrielgonzagasilva@outlook.com" data-en="Contact" data-pt="Contato">Contact</a>
-    </div>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#work" data-nav="work" data-en="Work" data-pt="Projetos">Work</a>
+      <a href="about.html" data-en="About" data-pt="Sobre">About</a>
+      <a href="#experience" data-nav="experience" data-en="Experience" data-pt="Experiência">Experience</a>
+      <button class="lang-toggle" type="button" data-lang-toggle><span class="active" data-lang-en>EN</span> / <span data-lang-pt>PT</span></button>
+    </nav>
   </div>
 </header>
 
-<main>
-<section class="hero" id="top">
-  <div class="container hero-inner">
-    <div class="hero-top">
-      <span class="availability"><span class="nav-dot"></span><span data-en="Available for new opportunities" data-pt="Disponível para novas oportunidades">Available for new opportunities</span></span>
-    </div>
-
-    <div class="hero-content">
-      <div>
-        <h1 data-en="Clear digital experiences, designed for complex products and systems." data-pt="Experiências digitais claras, desenhadas para produtos e sistemas complexos.">Clear digital experiences, designed for complex products and systems.</h1>
-        <p class="hero-sub" data-en="I’m a Product Designer working across innovation, AI and digital learning from São Paulo, Brazil." data-pt="Sou Product Designer atuando entre inovação, IA e aprendizagem digital em São Paulo, Brasil.">I’m a Product Designer working across innovation, AI and digital learning from São Paulo, Brazil.</p>
-        <a class="hero-cta" href="#overview" data-en="Find out more" data-pt="Saiba mais">Find out more</a>
+<main id="top">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1 data-en="I design digital products that make complex systems easier to use." data-pt="Eu desenho produtos digitais que tornam sistemas complexos mais fáceis de usar.">I design digital products that make complex systems easier to use.</h1>
+        <p class="hero-sub" data-en="Product Designer working across product, innovation, AI and learning." data-pt="Product Designer atuando entre produto, inovação, IA e aprendizagem.">Product Designer working across product, innovation, AI and learning.</p>
+        <a class="primary-btn" href="#work" data-en="View work" data-pt="Ver projetos">View work</a>
       </div>
-      <figure class="hero-photo" aria-label="Gabriel Gonzaga portrait">
+      <figure class="portrait" aria-label="Gabriel Gonzaga portrait">
         <img src="gabriel-profile-hd.svg" alt="Gabriel Gonzaga" width="800" height="1000" fetchpriority="high">
       </figure>
     </div>
+  </section>
 
-    <div class="hero-footer">
-      <div class="hero-links">
-        <span data-en="Find me at" data-pt="Me encontre no">Find me at</span>
-        <a href="https://github.com/GabrielGonzagaSilva" target="_blank" rel="noopener"><span>GitHub</span></a>
-        <span data-en="and" data-pt="e">and</span>
-        <a href="https://www.linkedin.com/in/gabrielgonzagasilva/" target="_blank" rel="noopener"><span>LinkedIn</span></a>
-        <span>·</span>
-        <a href="curriculo.html" target="_blank" rel="noopener"><span data-en="Download résumé" data-pt="Abrir currículo">Download résumé</span></a>
+  <section class="page-section" id="work">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow" data-en="Selected work" data-pt="Projetos selecionados">Selected work</p>
+          <h2 class="section-title" data-en="Selected work" data-pt="Projetos selecionados">Selected work</h2>
+        </div>
       </div>
-      <span class="scroll-hint" data-en="Scroll to explore ↓" data-pt="Role para explorar ↓">Scroll to explore ↓</span>
+
+      <div class="work-grid">
+        <a class="project-card featured" href="projects/quanto-lab.html">
+          <div>
+            <div class="project-meta" data-en="Independent product · 2026" data-pt="Produto independente · 2026">Independent product · 2026</div>
+            <h3>QuantoLab</h3>
+            <p data-en="Decision tools for work, career and money." data-pt="Ferramentas de decisão para trabalho, carreira e dinheiro.">Decision tools for work, career and money.</p>
+          </div>
+          <div class="project-preview preview-quantolab" aria-hidden="true">
+            <div class="preview-bar"></div>
+            <div class="chart"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-card" href="projects/aureum-hub.html">
+          <div class="project-meta" data-en="Internal product · 2026" data-pt="Produto interno · 2026">Internal product · 2026</div>
+          <h3>Aureum Hub</h3>
+          <p data-en="Operational information and decision support." data-pt="Informação operacional e apoio à decisão.">Operational information and decision support.</p>
+          <div class="project-preview preview-aureum" aria-hidden="true"><div class="preview-lines"><span></span><span></span><span></span><span></span></div></div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-card" href="projects/ai-governance.html">
+          <div class="project-meta" data-en="Corporate innovation · 2026" data-pt="Inovação corporativa · 2026">Corporate innovation · 2026</div>
+          <h3 data-en="AI Governance" data-pt="Governança de IA">AI Governance</h3>
+          <p data-en="Testing, review and documentation for AI." data-pt="Testes, revisão e documentação para IA.">Testing, review and documentation for AI.</p>
+          <div class="project-preview preview-ai" aria-hidden="true"><div class="preview-lines"><span></span><span></span><span></span><span></span></div></div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-card" href="projects/tourism-design-system.html">
+          <div class="project-meta" data-en="Confidential product · 2026" data-pt="Produto confidencial · 2026">Confidential product · 2026</div>
+          <h3 data-en="Tourism Design System" data-pt="Design System de Turismo">Tourism Design System</h3>
+          <p data-en="Reusable foundations, components and patterns." data-pt="Fundamentos, componentes e padrões reutilizáveis.">Reusable foundations, components and patterns.</p>
+          <div class="project-preview preview-tourism" aria-hidden="true"><div class="tiles"><i></i><i></i><i></i><i></i></div></div>
+          <span class="project-arrow">↗</span>
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" id="overview">
-  <div class="container">
-    <p class="section-label" data-en="Overview" data-pt="Visão geral">Overview</p>
-    <h2 class="section-title" data-en="Product Design shaped by systems thinking, visual clarity and practical experimentation." data-pt="Product Design guiado por pensamento sistêmico, clareza visual e experimentação prática.">Product Design shaped by systems thinking, visual clarity and practical experimentation.</h2>
-    <p class="section-copy" data-en="I work across digital products, internal platforms, AI initiatives and learning experiences — turning complex information into clearer product decisions." data-pt="Atuo entre produtos digitais, plataformas internas, iniciativas de IA e experiências de aprendizagem — transformando informação complexa em decisões de produto mais claras.">I work across digital products, internal platforms, AI initiatives and learning experiences — turning complex information into clearer product decisions.</p>
-
-    <div class="overview-grid">
-      <article class="panel large">
-        <h3 data-en="Current role" data-pt="Atuação atual">Current role</h3>
-        <div class="panel-stat">Crescimentum</div>
-        <p data-en="Design Intern working across Innovation, AI, LXD and Product Design." data-pt="Estagiário de Design atuando entre Inovação, IA, LXD e Product Design.">Design Intern working across Innovation, AI, LXD and Product Design.</p>
-      </article>
-      <article class="panel side">
-        <h3 data-en="Product focus" data-pt="Foco de produto">Product focus</h3>
-        <div class="panel-list"><span>Product Design</span><span>UX/UI</span><span>Product Strategy</span><span>Design Systems</span><span>AI Governance</span><span>LXD</span></div>
-      </article>
-      <article class="panel third">
-        <h3 data-en="Independent product" data-pt="Produto independente">Independent product</h3>
-        <div class="panel-stat">QuantoLab</div>
-        <p data-en="A live decision-support platform with 28 tools for work, career and money." data-pt="Plataforma online de apoio à decisão com 28 ferramentas para trabalho, carreira e dinheiro.">A live decision-support platform with 28 tools for work, career and money.</p>
-      </article>
-      <article class="panel quote">
-        <div class="quote-text" data-en="I use design to make complex systems easier to understand, navigate and use." data-pt="Uso design para tornar sistemas complexos mais fáceis de compreender, navegar e usar.">I use design to make complex systems easier to understand, navigate and use.</div>
-        <div class="quote-meta">Gabriel Gonzaga · Product Designer</div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <div class="marquee-group"><span>Product Design</span><span>UX/UI</span><span>Product Strategy</span><span>AI Governance</span><span>Design Systems</span><span>Learning Experience Design</span><span>Research & Synthesis</span><span>Prototyping</span></div>
-    <div class="marquee-group"><span>Product Design</span><span>UX/UI</span><span>Product Strategy</span><span>AI Governance</span><span>Design Systems</span><span>Learning Experience Design</span><span>Research & Synthesis</span><span>Prototyping</span></div>
-  </div>
-</div>
-
-<section class="section" id="projects">
-  <div class="container">
-    <div class="projects-intro">
+  <section class="page-section" id="about">
+    <div class="container about-teaser">
       <div>
-        <p class="section-label" data-en="Projects" data-pt="Projetos">Projects</p>
-        <h2 class="section-title" data-en="Selected work across product, AI and systems." data-pt="Projetos selecionados entre produto, IA e sistemas.">Selected work across product, AI and systems.</h2>
+        <p class="eyebrow" data-en="About" data-pt="Sobre">About</p>
+        <h2 class="section-title" data-en="Designing clarity across product, innovation and learning." data-pt="Criando clareza entre produto, inovação e aprendizagem.">Designing clarity across product, innovation and learning.</h2>
+        <p class="section-copy" data-en="I work on digital products and systems where complexity needs to become understandable, usable and maintainable." data-pt="Trabalho em produtos e sistemas digitais nos quais a complexidade precisa se tornar compreensível, utilizável e sustentável.">I work on digital products and systems where complexity needs to become understandable, usable and maintainable.</p>
+        <a class="text-link" href="about.html" data-en="About me ↗" data-pt="Sobre mim ↗">About me ↗</a>
       </div>
-      <p class="section-copy" data-en="A concise selection of projects that represent my current direction in Product Design." data-pt="Uma seleção concisa de projetos que representam meu direcionamento atual em Product Design.">A concise selection of projects that represent my current direction in Product Design.</p>
+      <aside class="current-card">
+        <p class="eyebrow" data-en="Current" data-pt="Atual">Current</p>
+        <strong>Crescimentum · Innovation</strong>
+        <span>Product Design · AI · LXD · Systems</span>
+        <span>São Paulo, Brazil</span>
+      </aside>
     </div>
+  </section>
 
-    <div class="projects-list">
-      <a class="project" href="projects/quanto-lab.html" target="_blank">
-        <span class="project-index">01</span>
-        <div><h3>QuantoLab</h3><p data-en="Decision-support tools for work, career and money." data-pt="Ferramentas de apoio à decisão para trabalho, carreira e dinheiro.">Decision-support tools for work, career and money.</p></div>
-        <div class="project-tags"><span>Product Design</span><span>UX/UI</span><span>Product Strategy</span></div>
-        <span class="project-arrow">↗</span>
-      </a>
-      <a class="project" href="projects/aureum-hub.html" target="_blank">
-        <span class="project-index">02</span>
-        <div><h3>Aureum Hub</h3><p data-en="Internal platform for operational information and decision support." data-pt="Plataforma interna para informação operacional e apoio à decisão.">Internal platform for operational information and decision support.</p></div>
-        <div class="project-tags"><span>Product Design</span><span>Information Architecture</span><span>Automation</span></div>
-        <span class="project-arrow">↗</span>
-      </a>
-      <a class="project" href="projects/ai-governance.html" target="_blank">
-        <span class="project-index">03</span>
-        <div><h3 data-en="AI Governance & Productization" data-pt="Governança e Produtização de IA">AI Governance & Productization</h3><p data-en="Prompts, testing, quality criteria and human review." data-pt="Prompts, testes, critérios de qualidade e curadoria humana.">Prompts, testing, quality criteria and human review.</p></div>
-        <div class="project-tags"><span>AI Governance</span><span>Testing</span><span>Documentation</span></div>
-        <span class="project-arrow">↗</span>
-      </a>
-      <a class="project" href="projects/tourism-design-system.html" target="_blank">
-        <span class="project-index">04</span>
-        <div><h3 data-en="Tourism App Design System" data-pt="Design System para aplicativo de turismo">Tourism App Design System</h3><p data-en="Reusable foundations, components, states and interface patterns." data-pt="Fundamentos, componentes, estados e padrões de interface reutilizáveis.">Reusable foundations, components, states and interface patterns.</p></div>
-        <div class="project-tags"><span>Design System</span><span>UI Design</span><span>Accessibility</span></div>
-        <span class="project-arrow">↗</span>
-      </a>
+  <section class="page-section" id="experience">
+    <div class="container">
+      <p class="eyebrow" data-en="Experience" data-pt="Experiência">Experience</p>
+      <h2 class="section-title" data-en="Experience" data-pt="Experiência">Experience</h2>
+      <div class="experience-list">
+        <div class="exp-row">
+          <div class="exp-company">Crescimentum</div>
+          <div class="exp-role"><span data-en="Design Intern" data-pt="Estagiário de Design">Design Intern</span><small>Innovation · AI · LXD · Product Design</small></div>
+          <div class="exp-date" data-en="May 2026 — Present" data-pt="Mai. 2026 — atual">May 2026 — Present</div>
+        </div>
+        <div class="exp-row">
+          <div class="exp-company">Aureum</div>
+          <div class="exp-role">Co-Founder & Product Lead<small>Product strategy · UX/UI · Internal platforms</small></div>
+          <div class="exp-date" data-en="Jan 2026 — Present" data-pt="Jan. 2026 — atual">Jan 2026 — Present</div>
+        </div>
+        <div class="exp-row">
+          <div class="exp-company">TP / Microsoft</div>
+          <div class="exp-role"><span data-en="Technical Support" data-pt="Suporte Técnico">Technical Support</span><small>Copilot · Microsoft 365 · Windows</small></div>
+          <div class="exp-date">Jan 2024 — Jan 2025</div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" id="capabilities">
-  <div class="container">
-    <p class="section-label" data-en="Capabilities" data-pt="Competências">Capabilities</p>
-    <h2 class="section-title" data-en="A product practice that connects research, systems and visual craft." data-pt="Uma prática de produto que conecta pesquisa, sistemas e repertório visual.">A product practice that connects research, systems and visual craft.</h2>
-    <div class="services">
-      <article class="service"><span class="service-number">01</span><h3 data-en="Product & Experience" data-pt="Produto & Experiência">Product & Experience</h3><ul><li>Product Design & UX/UI</li><li>Product Strategy</li><li data-en="Research & synthesis" data-pt="Pesquisa & síntese">Research & synthesis</li><li data-en="Prototyping & flows" data-pt="Prototipação & fluxos">Prototyping & flows</li></ul></article>
-      <article class="service"><span class="service-number">02</span><h3 data-en="AI & Innovation" data-pt="IA & Inovação">AI & Innovation</h3><ul><li data-en="AI governance & productization" data-pt="Governança & produtização de IA">AI governance & productization</li><li data-en="Prompt design & evaluation" data-pt="Construção & avaliação de prompts">Prompt design & evaluation</li><li data-en="Testing & human review" data-pt="Testes & curadoria humana">Testing & human review</li><li data-en="Documentation" data-pt="Documentação">Documentation</li></ul></article>
-      <article class="service"><span class="service-number">03</span><h3 data-en="Systems & Learning" data-pt="Sistemas & Aprendizagem">Systems & Learning</h3><ul><li>Design Systems</li><li data-en="Accessibility & consistency" data-pt="Acessibilidade & consistência">Accessibility & consistency</li><li>Learning Experience Design</li><li data-en="Instructional Design" data-pt="Design Instrucional">Instructional Design</li></ul></article>
+  <section class="page-section">
+    <div class="container">
+      <p class="eyebrow" data-en="Education" data-pt="Formação">Education</p>
+      <h2 class="section-title" data-en="Education" data-pt="Formação">Education</h2>
+      <div class="education-grid">
+        <article class="edu-card"><div class="brand-mark"><b>UN</b> UNICID</div><h3 data-en="Graphic Design" data-pt="Design Gráfico">Graphic Design</h3><p data-en="Expected Dec 2027" data-pt="Previsão dez. 2027">Expected Dec 2027</p></article>
+        <article class="edu-card"><div class="brand-mark"><b>ME</b> Mergo</div><h3>Product Design</h3><p data-en="2026 · Ongoing" data-pt="2026 · Em andamento">2026 · Ongoing</p></article>
+        <article class="edu-card"><div class="brand-mark"><b>ES</b> Escola CUCA</div><h3 data-en="Advertising Creativity & Art Direction" data-pt="Criatividade Publicitária & Direção de Arte">Advertising Creativity & Art Direction</h3><p>2025</p></article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" id="experience">
-  <div class="container">
-    <p class="section-label" data-en="Experience" data-pt="Experiência">Experience</p>
-    <h2 class="section-title" data-en="Design, technology and product in practice." data-pt="Design, tecnologia e produto na prática.">Design, technology and product in practice.</h2>
-    <div class="experience-list">
-      <div class="exp-row"><div class="exp-date" data-en="May 2026 — Present" data-pt="Mai. 2026 — atual">May 2026 — Present</div><div class="exp-role">Crescimentum · <span data-en="Design Intern" data-pt="Estagiário de Design">Design Intern</span></div><div class="exp-body" data-en="Innovation, AI, LXD and Product Design. Supporting digital solutions, AI governance, testing and human review." data-pt="Inovação, IA, LXD e Product Design. Apoio a soluções digitais, governança de IA, testes e curadoria humana.">Innovation, AI, LXD and Product Design. Supporting digital solutions, AI governance, testing and human review.</div></div>
-      <div class="exp-row"><div class="exp-date" data-en="Jan 2026 — Present" data-pt="Jan. 2026 — atual">Jan 2026 — Present</div><div class="exp-role">Aureum · Co-Founder & Product Lead</div><div class="exp-body" data-en="Product strategy, UX/UI, experience architecture, prototyping, validation and continuous improvement." data-pt="Estratégia de produto, UX/UI, arquitetura da experiência, prototipação, validação e melhoria contínua.">Product strategy, UX/UI, experience architecture, prototyping, validation and continuous improvement.</div></div>
-      <div class="exp-row"><div class="exp-date">Jan 2024 — Jan 2025</div><div class="exp-role">TP · Microsoft Technical Support</div><div class="exp-body" data-en="Copilot, Microsoft 365 and Windows. Troubleshooting, user guidance and customer experience." data-pt="Copilot, Microsoft 365 e Windows. Diagnóstico, orientação ao usuário e experiência do cliente.">Copilot, Microsoft 365 and Windows. Troubleshooting, user guidance and customer experience.</div></div>
+  <section class="page-section">
+    <div class="container">
+      <p class="eyebrow" data-en="Tools" data-pt="Ferramentas">Tools</p>
+      <h2 class="section-title" data-en="Tools I work with" data-pt="Ferramentas que uso">Tools I work with</h2>
+      <div class="tools-grid">
+        <div class="tool-chip"><b>FI</b><span>Figma</span></div>
+        <div class="tool-chip"><b>CH</b><span>ChatGPT</span></div>
+        <div class="tool-chip"><b>CL</b><span>Claude</span></div>
+        <div class="tool-chip"><b>PH</b><span>Photoshop</span></div>
+        <div class="tool-chip"><b>IL</b><span>Illustrator</span></div>
+        <div class="tool-chip"><b>NO</b><span>Notion</span></div>
+        <div class="tool-chip"><b>MI</b><span>Microsoft 365</span></div>
+        <div class="tool-chip"><b>GO</b><span>Google Workspace</span></div>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="section" id="faq">
-  <div class="container">
-    <p class="section-label" data-en="Frequently asked questions" data-pt="Perguntas frequentes">Frequently asked questions</p>
-    <div class="faq">
-      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-num">01</span><strong data-en="What kind of roles are you looking for?" data-pt="Que tipo de oportunidade você procura?">What kind of roles are you looking for?</strong><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner" data-en="I’m focused on Product Design, Digital Product, UX/UI, Customer Experience and Innovation opportunities, especially where design, technology and AI intersect." data-pt="Meu foco está em oportunidades de Product Design, Produto Digital, UX/UI, Experiência do Cliente e Inovação, especialmente na interseção entre design, tecnologia e IA.">I’m focused on Product Design, Digital Product, UX/UI, Customer Experience and Innovation opportunities, especially where design, technology and AI intersect.</div></div></div>
-      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-num">02</span><strong data-en="What tools do you use?" data-pt="Quais ferramentas você utiliza?">What tools do you use?</strong><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Figma, ChatGPT, Claude, Photoshop, Illustrator, Notion, Microsoft 365 and Google Workspace.</div></div></div>
-      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-num">03</span><strong data-en="Can I see your résumé?" data-pt="Posso ver seu currículo?">Can I see your résumé?</strong><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner"><a href="curriculo.html" target="_blank" style="border-bottom:1px solid var(--accent);text-decoration:none" data-en="Open the full résumé ↗" data-pt="Abrir currículo completo ↗">Open the full résumé ↗</a></div></div></div>
-      <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span class="faq-num">04</span><strong data-en="How can I contact you?" data-pt="Como posso entrar em contato?">How can I contact you?</strong><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">gabrielgonzagasilva@outlook.com · LinkedIn: gabrielgonzagasilva</div></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="contact-section">
-  <div class="container">
-    <div class="contact-head" data-en="Let’s build clearer digital products." data-pt="Vamos construir produtos digitais mais claros.">Let’s build clearer digital products.</div>
-    <a class="contact-email" href="mailto:gabrielgonzagasilva@outlook.com">gabrielgonzagasilva@outlook.com</a>
-    <div class="site-footer"><span>Gabriel Gonzaga · São Paulo, Brazil</span><span>Product Design · Innovation · AI · LXD</span><span>© 2026</span></div>
-  </div>
-</section>
+  </section>
 </main>
 
-<script src="figma-portfolio.js" defer></script>
+<footer class="contact">
+  <div class="container">
+    <h2 data-en="Let’s build clearer digital products." data-pt="Vamos construir produtos digitais mais claros.">Let’s build clearer digital products.</h2>
+    <a class="email" href="mailto:gabrielgonzagasilva@outlook.com">gabrielgonzagasilva@outlook.com</a>
+  </div>
+</footer>
 </body>
 </html>
