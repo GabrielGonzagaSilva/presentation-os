@@ -50,6 +50,62 @@
     try { localStorage.setItem(storageKey, next); } catch (_) {}
   }
 
+  function enhanceBrandLogos() {
+    const script = document.querySelector('script[src$="figma-portfolio.js"]');
+    if (!script) return;
+    const sprite = new URL('assets/brand-sprite.svg', script.src).href;
+
+    const education = {
+      UNICID: { id: 'unicid', width: 24, height: 24 },
+      Mergo: { id: 'mergo', width: 24, height: 24 },
+      'Escola CUCA': { id: 'escola-cuca', width: 48, height: 20 },
+      SAGA: { id: 'saga', width: 48, height: 24 }
+    };
+    const tools = {
+      Figma: 'figma',
+      ChatGPT: 'chatgpt',
+      Claude: 'claude',
+      Photoshop: 'photoshop',
+      Illustrator: 'illustrator',
+      Notion: 'notion'
+    };
+
+    function logoSvg(id, width, height) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      svg.setAttribute('width', String(width));
+      svg.setAttribute('height', String(height));
+      svg.setAttribute('viewBox', id === 'escola-cuca' ? '0 0 96 30' : id === 'saga' ? '0 0 96 48' : '0 0 48 48');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.setAttribute('focusable', 'false');
+      svg.style.display = 'block';
+      svg.style.flex = '0 0 auto';
+      use.setAttribute('href', `${sprite}#${id}`);
+      svg.appendChild(use);
+      return svg;
+    }
+
+    document.querySelectorAll('.edu-card .brand-label').forEach((label) => {
+      const name = label.textContent.trim();
+      const config = education[name];
+      if (!config) return;
+      label.replaceChildren(logoSvg(config.id, config.width, config.height));
+      label.setAttribute('role', 'img');
+      label.setAttribute('aria-label', name);
+      label.style.justifyContent = 'center';
+    });
+
+    document.querySelectorAll('.tool-chip').forEach((chip) => {
+      const name = chip.textContent.trim();
+      const id = tools[name];
+      if (!id) return;
+      chip.replaceChildren(logoSvg(id, 24, 24));
+      chip.setAttribute('role', 'img');
+      chip.setAttribute('aria-label', name);
+      chip.style.justifyContent = 'center';
+    });
+  }
+
   document.querySelectorAll('.project-arrow').forEach((node) => node.setAttribute('aria-hidden', 'true'));
 
   document.querySelectorAll('.nav a').forEach((link) => {
@@ -60,6 +116,8 @@
       }
     } catch (_) {}
   });
+
+  enhanceBrandLogos();
 
   let initial = 'en';
   try { initial = localStorage.getItem(storageKey) || 'en'; } catch (_) {}
