@@ -1,0 +1,98 @@
+/* RESPONSIVE */
+@media(max-width:1100px){
+  body.v42{--v42-gutter:48px}
+  body.v42.home-page .hero-grid,body.v42.about-page .about-hero-grid{grid-template-columns:minmax(0,1fr) 320px;gap:48px}
+  body.v42 .portrait-card{width:320px}
+  body.v42.home-page .hero h1{font-size:58px;width:auto}
+  body.v42.about-page .about-hero h1{font-size:54px;width:auto}
+  body.v42 .project-card.featured{grid-template-columns:340px minmax(0,1fr)}
+  body.v42 .exp-row{grid-template-columns:160px 1fr 150px}
+}
+@media(max-width:820px){
+  body.v42{--v42-gutter:32px}
+  body.v42 .nav{gap:16px}
+  body.v42.home-page .hero-grid,body.v42.about-page .about-hero-grid{grid-template-columns:minmax(0,1fr) 280px;gap:32px}
+  body.v42 .portrait-card{width:280px}
+  body.v42 .portrait{height:300px}
+  body.v42.home-page .hero h1{font-size:48px}
+  body.v42.about-page .about-hero h1{font-size:46px}
+  body.v42 .project-card.featured{grid-template-columns:280px minmax(0,1fr)}
+}
+@media(max-width:600px){
+  body.v42{--v42-gutter:18px}
+  body.v42 .site-header,body.v42 .header-inner{height:51px}
+  body.v42 .nav a[href*="experience"]{display:none}
+  body.v42.home-page .nav a[href*="about"]{display:none}
+  body.v42 .nav{gap:14px}
+  body.v42.home-page .hero{height:auto}
+  body.v42.home-page .hero-grid{height:auto;display:flex;flex-direction:column;gap:10px;padding-top:32px;padding-bottom:36px}
+  body.v42.home-page .hero-copy{padding-top:0}
+  body.v42.home-page .hero h1{font-size:38px;line-height:1.16;width:auto}
+  body.v42.home-page .hero-sub{font-size:12px;margin-top:8px}
+  body.v42 .portrait-card{order:2;width:100%;margin-top:10px}
+  body.v42 .portrait{height:auto;aspect-ratio:1.18/1}
+  body.v42.home-page #work{height:auto}
+  body.v42.home-page #work>.container{padding-top:28px;padding-bottom:38px}
+  body.v42 .work-title{font-size:30px;line-height:1.2;margin-bottom:16px}
+  body.v42 .work-grid{grid-template-columns:1fr;gap:10px}
+  body.v42 .project-card,body.v42 .project-card.featured{height:auto;min-height:0;display:flex;grid-column:auto;padding:12px}
+  body.v42 .project-card.featured .project-preview,body.v42 .project-preview{height:190px;min-height:190px;margin-top:10px}
+  body.v42 .project-card h3,body.v42 .project-card.featured h3{font-size:18px}
+  body.v42.home-page .about-teaser-section{height:auto}
+  body.v42.home-page .about-teaser{height:auto;display:block;padding-top:36px;padding-bottom:36px}
+  body.v42.home-page .about-teaser .section-title{font-size:30px}
+  body.v42 .current-card{margin-top:22px}
+  body.v42.home-page .experience-section,body.v42.home-page .education-section,body.v42.home-page .tools-section,body.v42.about-page .experience-section,body.v42.about-page .education-section,body.v42.about-page .tools-section{height:auto}
+  body.v42 .experience-section>.container,body.v42 .education-section>.container,body.v42 .tools-section>.container{padding-top:36px;padding-bottom:36px}
+  body.v42 .section-title{font-size:30px}
+  body.v42 .exp-row{grid-template-columns:1fr;gap:6px;align-items:start;padding:12px 0}
+  body.v42 .exp-brand .brand-label{width:max-content;min-width:127px}
+  body.v42 .exp-date{text-align:left}
+  body.v42 .education-grid,body.v42 .tools-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  body.v42 .edu-card{height:auto;min-height:125px;padding:12px}
+  body.v42 .tool-chip{height:58px}
+  body.v42.home-page .contact,body.v42.about-page .contact{height:auto;padding:0}
+  body.v42.home-page .contact>.container,body.v42.about-page .contact>.container{padding-top:36px;padding-bottom:42px}
+  body.v42 .contact h2,body.v42.about-page .contact h2{font-size:34px}
+
+  body.v42.about-page{--v42-gutter:16px}
+  body.v42.about-page .about-hero{height:auto}
+  body.v42.about-page .about-hero-grid{height:auto;display:flex;flex-direction:column;gap:16px;padding-top:26px;padding-bottom:36px}
+  body.v42.about-page .about-hero-grid>div{padding-top:0}
+  body.v42.about-page .about-hero h1{font-size:38px;line-height:1.18}
+  body.v42.about-page .portrait-card{margin-top:0}
+  body.v42.about-page .principles-section{height:auto}
+  body.v42.about-page .principles-section>.container{padding-top:34px;padding-bottom:36px}
+  body.v42 .principles{grid-template-columns:1fr;gap:8px}
+  body.v42 .principle{min-height:0}
+
+  body.v42.case-page{--v42-gutter:16px}
+  body.v42.case-page .case-hero{height:auto}
+  body.v42.case-page .case-hero>.container{padding-top:28px;padding-bottom:28px}
+  body.v42.case-page .case-hero h1{font-size:42px;line-height:1.18}
+  body.v42.case-page .case-intro{font-size:13px}
+  body.v42 .role-card{grid-template-columns:1fr;gap:10px;align-items:start}
+  body.v42 .role-tag{width:max-content}
+  body.v42 .role-card time{display:none}
+  body.v42.case-page .case-preview-section{height:auto;padding-bottom:34px}
+  body.v42.case-page .case-preview-shell{height:216px;padding:12px}
+  body.v42 .artifact-title{left:20px;top:22px;font-size:13px}
+  body.v42 .artifact-line{left:20px;font-size:11px}.artifact-line.one{top:50px}.artifact-line.two{top:78px}.artifact-line.three{display:none}
+  body.v42 .case-preview-shell .chart{left:26px;bottom:18px;height:86px;gap:10px}.case-preview-shell .chart i{width:10px}
+  body.v42 .ops-rail{left:18px;top:54px;bottom:18px;width:74px}.ops-list{left:104px;right:18px;top:54px;gap:8px}.ops-row{height:24px;font-size:9px;padding:0 8px}
+  body.v42 .review-list{left:18px;right:18px;top:52px;gap:8px}.review-row{height:24px;font-size:9px;padding:0 8px}
+  body.v42 .system-grid{left:18px;right:18px;top:62px;gap:8px}.system-tile{height:88px;padding:10px;font-size:9px}
+  body.v42.case-page .case-block.challenge,body.v42.case-page .case-block.approach,body.v42.case-page .case-block.artifacts-block,body.v42.case-page .case-block.outcome{height:auto;padding-top:32px;padding-bottom:32px}
+  body.v42.case-page .case-block h2{font-size:30px}
+  body.v42.case-page .case-block>p{font-size:13px}
+  body.v42 .approach-grid,body.v42 .artifacts{grid-template-columns:1fr;gap:10px}
+  body.v42 .approach-item,body.v42 .artifact{min-height:0}
+  body.v42 .next-project{margin-top:16px}
+  body.v42 .next-project strong{font-size:28px}
+}
+@media(max-width:400px){body.v42{--v42-gutter:16px}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  body.v42 *,body.v42 *::before,body.v42 *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+@media(forced-colors:active){body.v42 :focus-visible{outline:2px solid Highlight}}

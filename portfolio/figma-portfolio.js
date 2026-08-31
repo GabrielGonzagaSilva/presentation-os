@@ -6,11 +6,6 @@
   const pt = document.querySelector('[data-lang-pt]');
   const main = document.querySelector('main');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const marquee = document.querySelector('.marquee');
-  const marqueeTrack = marquee?.querySelector('.marquee-track');
-
-  let marqueePaused = reducedMotion.matches;
-  let marqueeToggle = null;
   let skipLink = null;
 
   if (main) {
@@ -31,49 +26,13 @@
     });
   }
 
-  if (marquee && marqueeTrack) {
-    marqueeTrack.id ||= 'practice-marquee-track';
-    marqueeToggle = document.createElement('button');
-    marqueeToggle.type = 'button';
-    marqueeToggle.className = 'marquee-toggle';
-    marqueeToggle.setAttribute('aria-controls', marqueeTrack.id);
-    marquee.appendChild(marqueeToggle);
-
-    marqueeToggle.addEventListener('click', () => {
-      marqueePaused = !marqueePaused;
-      syncMarqueeState(root.dataset.lang || 'en');
-    });
-  }
-
-  function syncMarqueeState(lang) {
-    if (!marquee || !marqueeToggle) return;
-    marquee.classList.toggle('is-paused', marqueePaused || reducedMotion.matches);
-    marqueeToggle.setAttribute('aria-pressed', String(marqueePaused));
-
-    const isPt = lang === 'pt';
-    const paused = marqueePaused || reducedMotion.matches;
-    marqueeToggle.textContent = paused ? (isPt ? 'Retomar' : 'Resume') : (isPt ? 'Pausar' : 'Pause');
-    marqueeToggle.setAttribute(
-      'aria-label',
-      paused
-        ? (isPt ? 'Retomar movimento das áreas de atuação' : 'Resume motion for areas of practice')
-        : (isPt ? 'Pausar movimento das áreas de atuação' : 'Pause motion for areas of practice')
-    );
-  }
-
   function syncNavigation(lang) {
     const isPt = lang === 'pt';
     document.querySelectorAll('.nav').forEach((nav) => {
       nav.setAttribute('aria-label', isPt ? 'Navegação principal' : 'Primary navigation');
     });
-
-    if (skipLink) {
-      skipLink.textContent = isPt ? 'Ir para o conteúdo' : 'Skip to content';
-    }
-
-    if (btn) {
-      btn.setAttribute('aria-label', isPt ? 'Mudar idioma para inglês' : 'Change language to Portuguese');
-    }
+    if (skipLink) skipLink.textContent = isPt ? 'Ir para o conteúdo' : 'Skip to content';
+    if (btn) btn.setAttribute('aria-label', isPt ? 'Mudar idioma para inglês' : 'Change language to Portuguese');
   }
 
   function applyLanguage(lang) {
@@ -87,16 +46,11 @@
 
     if (en) en.classList.toggle('active', next === 'en');
     if (pt) pt.classList.toggle('active', next === 'pt');
-
     syncNavigation(next);
-    syncMarqueeState(next);
-
     try { localStorage.setItem(storageKey, next); } catch (_) {}
   }
 
-  document.querySelectorAll('.project-arrow').forEach((node) => {
-    node.setAttribute('aria-hidden', 'true');
-  });
+  document.querySelectorAll('.project-arrow').forEach((node) => node.setAttribute('aria-hidden', 'true'));
 
   document.querySelectorAll('.nav a').forEach((link) => {
     try {
@@ -111,14 +65,7 @@
   try { initial = localStorage.getItem(storageKey) || 'en'; } catch (_) {}
   applyLanguage(initial);
 
-  btn?.addEventListener('click', () => {
-    applyLanguage(root.dataset.lang === 'en' ? 'pt' : 'en');
-  });
-
-  reducedMotion.addEventListener?.('change', (event) => {
-    marqueePaused = event.matches;
-    syncMarqueeState(root.dataset.lang || 'en');
-  });
+  btn?.addEventListener('click', () => applyLanguage(root.dataset.lang === 'en' ? 'pt' : 'en'));
 
   document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach((link) => {
     link.addEventListener('click', (event) => {
@@ -131,6 +78,7 @@
         behavior: reducedMotion.matches ? 'auto' : 'smooth',
         block: 'start'
       });
+      if (history.pushState) history.pushState(null, '', selector);
     });
   });
 })();
